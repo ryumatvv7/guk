@@ -12,7 +12,7 @@ Auf Deutsch mit kurzen englischen Erklärungen.
 - **Skills:** 25 praktische Skills für die Abschlussprüfung – Material, Ablauf, worauf Prüfer:innen achten, typische Fragen, Lücken der Unterlagen; Zufalls-Skill als Prüfungssimulation
 - **Abläufe:** 18 Schrittfolgen zum Ordnen + Checklisten
 - **Zuordnen:** 23 Drag-&-Drop-Aufgaben
-- **Offene Fragen:** 27 Fragen mit Kernpunkten und Musterantwort in einfachem Deutsch (B1)
+- **Offene Fragen:** 27 Fragen mit Kernpunkten und Musterantwort
 - **Konspekt:** Zahlen, alle Themen, Skill-Check, Merkhilfen, „Fallen“ (Widersprüche zwischen Quellen), Wörterbuch DE–EN
 
 ## Hinweise
