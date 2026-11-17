@@ -2870,11 +2870,11 @@ applySkin(curSkin());
 /* ---------- Countdown ---------- */
 const EXAMS=[["2026-11-19","Do 19.11."],["2026-11-20","Fr 20.11."],["2027-02-05","WH 05.02."]];
 function curExam(){ return store.get("guk_exam","2026-11-19"); }
-function cdText(){ const [y,m,d]=curExam().split("-").map(Number); const ms=new Date(y,m-1,d)-new Date();
-  if(ms<=0&&ms>-864e5) return "<b>Heute ist Prüfung – viel Erfolg! 🍀</b>";
+function cdText(){ const [y,m,d]=curExam().split("-").map(Number); const ms=new Date(y,m-1,d,8)-new Date();
+  if(ms<=0&&ms>-16*36e5) return "<b>Heute ist Prüfung – viel Erfolg! 🍀</b>";
   if(ms<=0) return "Termin vorbei – wähle einen anderen Termin";
   const D=Math.floor(ms/864e5),H=Math.floor(ms/36e5)%24,M=Math.floor(ms/6e4)%60,S=Math.floor(ms/1e3)%60;
-  return `<span>Noch bis zu deiner Prüfung</span><b>${D} T ${String(H).padStart(2,"0")}:${String(M).padStart(2,"0")}:${String(S).padStart(2,"0")}</b>`; }
+  return `<span>Noch bis zu deiner Prüfung (8:00 Uhr)</span><b>${D} T ${String(H).padStart(2,"0")}:${String(M).padStart(2,"0")}:${String(S).padStart(2,"0")}</b>`; }
 setInterval(()=>{const e=document.getElementById("cd"); if(e)e.innerHTML=cdText();},1000);
 tick();
 home();
