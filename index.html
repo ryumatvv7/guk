@@ -10,7 +10,8 @@
 <title>GuK 1 Prüfungstrainer</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@500;600;700&family=Exo+2:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap">
-<style id="css-cyber" media="not all">
+<style id="css-cyber" media="not all">.cd{display:flex;flex-direction:column;gap:10px;background:var(--card);border:1px solid var(--line-strong);padding:16px 18px;margin-top:6px}.cd-t{display:flex;flex-direction:column;gap:2px}.cd-t span{font-size:13.5px;color:var(--muted)}.cd-t b{font-size:30px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+
 /* Layout: AMOLED-black nursing HUD tuned for Samsung/One UI – thumb-reach bottom tab bar, 52px targets, panels with corner brackets; Fehleranalyse docks right on wide screens; clock above the tab bar. Based on: one column of med-response HUD panels with cut corners and corner brackets; Fehleranalyse docks right on wide screens; clock/timer bottom-right. Deliberately single dark theme (night-city medical HUD): black glass, mint-cyan signal colour, white type, red for errors. */
 :root{
   --bg:#000000; --bg2:#02070d; --panel:rgba(6,18,23,.86); --panel-hi:rgba(10,32,38,.92);
@@ -328,7 +329,8 @@ h3{font-family:var(--f-display);font-weight:700;font-size:19px;margin:0;color:va
 .skin .chip{font-size:13px}
 </style>
 </head>
-<body><style id="css-oneui">
+<body><style id="css-oneui">.cd{display:flex;flex-direction:column;gap:10px;background:var(--card);border-radius:var(--r);padding:16px 18px;margin-top:6px}.cd-t{display:flex;flex-direction:column;gap:2px}.cd-t span{font-size:13.5px;color:var(--muted)}.cd-t b{font-size:30px;font-weight:700;color:var(--accent);font-variant-numeric:tabular-nums;letter-spacing:-.01em}
+
 /* Layout: One UI 9 style – large title "viewing area" on top, content in rounded cards on a grey (light) / pure black (dark) ground, pill buttons, floating blurred bottom tab bar in thumb reach; Fehleranalyse card docks right on wide screens. Follows the system light/dark setting. */
 :root{
   --bg:#f4f4f6; --card:#ffffff; --card2:#f1f2f4; --card3:#e8e9ec;
@@ -2244,10 +2246,11 @@ function home(){
   const ex=examPool().length;
   app.innerHTML=`
   <header class="head">
-    <div class="status"><span class="dot"></span>Prüfung am 19.11. · FH JOANNEUM</div>
+    <div class="status"><span class="dot"></span>Prüfung: 19.11. &amp; 20.11. · Wiederholung: 05.02.</div>
     <h1><span class="x">GuK 1</span> Prüfungstrainer</h1>
     ${ECG}
     <p class="sub">Gesundheits- und Krankenpflege 1 · ${B.length} Fragen (SC, MC, richtig/falsch), ${SKILLS.length} Praxis-Skills, ${SEQ.length} Abläufe, ${OPEN.length} offene Fragen. Bei MC zählt nur die komplett richtige Auswahl.</p>
+    <div class="cd"><div class="cd-t" id="cd">${cdText()}</div><div class="chips" role="group" aria-label="Mein Prüfungstermin">${EXAMS.map(([k,n])=>`<button class="chip" data-ex="${k}" aria-pressed="${curExam()===k}">${n}</button>`).join("")}</div></div>
     <div class="chips skin" role="group" aria-label="Design">${SKINS.map(([k,n])=>`<button class="chip" data-skin="${k}" aria-pressed="${curSkin()===k}">${n}</button>`).join("")}</div>
   </header>
   ${r?`<section class="panel resume"><div class="qhead"><h2>Weitermachen</h2><span class="stats">${esc(r.mode)} · ${rDone} / ${r.items.length} beantwortet${r.timed?"":` · ${rOk} richtig`}</span></div><div class="row"><button class="btn" id="resume">Fortsetzen</button><button class="btn ghost" id="drop">Verwerfen</button></div></section>`:""}
@@ -2328,6 +2331,7 @@ function home(){
   app.querySelector("#k-open").onclick=()=>konspekt();
   const rko=app.querySelector("#rk-open"); if(rko)rko.onclick=()=>ranking();
   app.querySelector("#k-fallen").onclick=()=>konspekt("k11");
+  app.querySelectorAll("[data-ex]").forEach(b=>b.onclick=()=>{store.set("guk_exam",b.dataset.ex);home();});
   app.querySelectorAll("[data-skin]").forEach(b=>b.onclick=()=>{setSkin(b.dataset.skin);home();});
   app.querySelector("#sk-open").onclick=()=>skills();
   app.querySelector("#kk-open").onclick=()=>karten();
@@ -2862,6 +2866,16 @@ function applySkin(v){ const c=document.getElementById("css-cyber"), o=document.
   if(v==="light"||v==="dark")r.setAttribute("data-theme",v); else if(HOST_THEME)r.setAttribute("data-theme",HOST_THEME); else r.removeAttribute("data-theme"); }
 function setSkin(v){ store.set("guk_skin",v); applySkin(v); }
 applySkin(curSkin());
+
+/* ---------- Countdown ---------- */
+const EXAMS=[["2026-11-19","Do 19.11."],["2026-11-20","Fr 20.11."],["2027-02-05","WH 05.02."]];
+function curExam(){ return store.get("guk_exam","2026-11-19"); }
+function cdText(){ const [y,m,d]=curExam().split("-").map(Number); const ms=new Date(y,m-1,d)-new Date();
+  if(ms<=0&&ms>-864e5) return "<b>Heute ist Prüfung – viel Erfolg! 🍀</b>";
+  if(ms<=0) return "Termin vorbei – wähle einen anderen Termin";
+  const D=Math.floor(ms/864e5),H=Math.floor(ms/36e5)%24,M=Math.floor(ms/6e4)%60,S=Math.floor(ms/1e3)%60;
+  return `<span>Noch bis zu deiner Prüfung</span><b>${D} T ${String(H).padStart(2,"0")}:${String(M).padStart(2,"0")}:${String(S).padStart(2,"0")}</b>`; }
+setInterval(()=>{const e=document.getElementById("cd"); if(e)e.innerHTML=cdText();},1000);
 tick();
 home();
 </script>
