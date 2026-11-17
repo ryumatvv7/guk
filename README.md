@@ -10,6 +10,7 @@ Auf Deutsch mit kurzen englischen Erklärungen.
 - **7 Themen:** Aktivität & Ruhe · Hygiene, Wäsche & Bett · Vitalfunktionen · Sicherheit & Medikamente · Körperpflege & Thrombose · Ernährung & Ausscheidung · Pädiatrie
 - **Modi:** Üben · Kurzrunde (15) · Fehler wiederholen · Noch nicht bearbeitet · Prüfung mit Erklärung · Prüfung mit Timer (mit Note)
 - **Skills:** 25 praktische Skills für die Abschlussprüfung – Material, Ablauf, worauf Prüfer:innen achten, typische Fragen, Lücken der Unterlagen; Zufalls-Skill als Prüfungssimulation
+- **Karteikarten:** 245 Karten (Fakten, Zahlen, Wörterbuch DE–EN) mit Wiederholung wie in Anki: Nochmal / Schwer / Gut / Einfach, Stapel pro Thema, „Alle durchblättern“
 - **Abläufe:** 18 Schrittfolgen zum Ordnen + Checklisten
 - **Zuordnen:** 23 Drag-&-Drop-Aufgaben
 - **Offene Fragen:** 27 Fragen mit Kernpunkten und Musterantwort

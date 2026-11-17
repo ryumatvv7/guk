@@ -203,7 +203,7 @@ h3{font-family:var(--f-display);font-weight:700;font-size:18px;margin:0;color:va
 .note{font-size:15px;color:var(--muted);background:var(--card2);border-radius:var(--r-s);padding:10px 12px}
 .note.warn{background:var(--warn-soft);color:var(--ink)}
 /* bottom tab bar, floating */
-.tabbar{position:fixed;z-index:30;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom, 0px));width:min(560px, calc(100% - 24px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:2px;padding:6px;border-radius:32px;background:var(--bar);backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);box-shadow:0 6px 24px rgba(0,0,0,.12),0 0 0 1px var(--line)}
+.tabbar{position:fixed;z-index:30;left:50%;transform:translateX(-50%);bottom:calc(12px + env(safe-area-inset-bottom, 0px));width:min(560px, calc(100% - 24px - env(safe-area-inset-left, 0px) - env(safe-area-inset-right, 0px)));display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:2px;padding:6px;border-radius:32px;background:var(--bar);backdrop-filter:blur(22px) saturate(1.4);-webkit-backdrop-filter:blur(22px) saturate(1.4);box-shadow:0 6px 24px rgba(0,0,0,.12),0 0 0 1px var(--line)}
 .tabbar button{font:inherit;font-size:11.5px;font-weight:500;color:var(--muted);background:none;border:0;min-height:56px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:3px;cursor:pointer;border-radius:26px;-webkit-tap-highlight-color:transparent;min-width:0;transition:background .15s,color .15s}
 .tabbar button span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;max-width:100%}
 .tabbar button[aria-current="page"]{color:var(--accent);background:var(--accent-soft);font-weight:700}
@@ -270,6 +270,33 @@ h3{font-family:var(--f-display);font-weight:700;font-size:18px;margin:0;color:va
 .knav::-webkit-scrollbar{display:none}
 .knav a{flex:none;font-size:14px;font-weight:500;color:var(--ink);text-decoration:none;padding:8px 13px;border-radius:999px;white-space:nowrap}
 .knav a:hover{background:var(--card2)}
+.kk-sum{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.kk-sum div{background:var(--card2);border-radius:var(--r-m);padding:14px 16px;display:flex;flex-direction:column;gap:4px;min-width:0}
+.kk-sum b{font-size:30px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.kk-sum span{font-size:13px;color:var(--muted)}
+.kk-n{color:var(--accent)} .kk-l{color:var(--bad)} .kk-d{color:var(--ok)}
+.kk-cnt{display:flex;gap:14px;font-variant-numeric:tabular-nums;font-size:17px;padding-right:6px}
+.kk-card{font:inherit;width:100%;min-height:clamp(260px,46vh,420px);background:var(--card);border:0;border-radius:28px;padding:28px 22px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;color:var(--ink);cursor:pointer;box-shadow:var(--shadow);-webkit-tap-highlight-color:transparent}
+.kk-card:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.kk-deck{font-size:13px;font-weight:600;color:var(--accent)}
+.kk-f{font-size:clamp(20px,5.5vw,26px);font-weight:700;color:var(--qink);line-height:1.3;overflow-wrap:anywhere;text-wrap:balance;max-width:40ch}
+.kk-card.back .kk-f{font-size:16px;font-weight:600;color:var(--muted)}
+.kk-hr{width:48px;height:3px;border-radius:2px;background:var(--line-strong);flex:none}
+.kk-b{font-size:clamp(18px,4.8vw,22px);font-weight:500;line-height:1.45;color:var(--qink);overflow-wrap:anywhere;max-width:52ch;text-wrap:pretty}
+.kk-hint{font-size:13px;color:var(--muted)}
+.kk-card.back{animation:kkflip .22s ease-out}
+@keyframes kkflip{from{transform:perspective(900px) rotateY(70deg);opacity:.3}to{transform:none;opacity:1}}
+.kk-rate{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:8px}
+.kk-rate.two{grid-template-columns:1fr 1fr}
+.kk-g{font:inherit;border:0;border-radius:20px;min-height:64px;padding:6px 4px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;cursor:pointer;-webkit-tap-highlight-color:transparent;min-width:0}
+.kk-g:active{transform:scale(.97)}
+.kk-g:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.kk-g b{font-size:15px;font-weight:700}
+.kk-g span{font-size:12px;opacity:.85;font-variant-numeric:tabular-nums}
+.kk-g.g0{background:var(--bad-soft);color:var(--bad)} .kk-g.g1{background:var(--warn-soft);color:var(--warn)} .kk-g.g2{background:var(--ok-soft);color:var(--ok)} .kk-g.g3{background:var(--accent-soft);color:var(--accent)}
+.kk-show{width:100%}
+.kk-keys{text-align:center}
+@media (hover:none){.kk-keys{display:none}}
 @media (max-width:600px){
   body{font-size:16.5px}
   .q{font-size:19px}
@@ -278,15 +305,19 @@ h3{font-family:var(--f-display);font-weight:700;font-size:18px;margin:0;color:va
   .hud-box{padding:5px 10px}
   #clock,#timer{font-size:14px}
   .score{font-size:56px}
-  .tabbar button{font-size:11px}
+  .tabbar button{font-size:10.5px}
+  .tabbar{gap:0;padding:5px}
+  .tabbar button span{letter-spacing:-.015em}
+  .tabbar svg{width:22px;height:22px}
 }
-@media (prefers-reduced-motion: reduce){.bar i{transition:none}.ai .wait{animation:none}.btn,.tabbar button,.sk summary::after{transition:none}}
+@media (max-width:370px){.tabbar button{font-size:9.5px}}
+@media (prefers-reduced-motion: reduce){.kk-card.back{animation:none}.bar i{transition:none}.ai .wait{animation:none}.btn,.tabbar button,.sk summary::after{transition:none}}
 </style>
 </head>
 <body>
 
 <div class="hud" aria-live="off"><div class="hud-box sig"><span class="hud-l">made by</span><span class="tag">@ryumatvv7</span></div><div class="hud-box"><span class="hud-l">Zeit</span><span id="clock">--:--:--</span></div><div class="hud-box" id="timerBox" hidden><span class="hud-l">Rest</span><span id="timer">30:00</span></div></div>
-<nav class="tabbar" aria-label="Bereiche"><button data-tab="home" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Start</span></button><button data-tab="skills" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v4h4v6h-4v4H9v-4H5V7h4z"/></svg><span>Skills</span></button><button data-tab="seq" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg><span>Abläufe</span></button><button data-tab="open" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg><span>Offen</span></button><button data-tab="ksp" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M9 10h6M9 14h6"/></svg><span>Konspekt</span></button></nav>
+<nav class="tabbar" aria-label="Bereiche"><button data-tab="home" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Start</span></button><button data-tab="skills" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 3h6v4h4v6h-4v4H9v-4H5V7h4z"/></svg><span>Skills</span></button><button data-tab="cards" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="7" width="14" height="13" rx="2.5"/><path d="M7 4h11.5A2.5 2.5 0 0 1 21 6.5V16"/></svg><span>Karten</span></button><button data-tab="seq" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 6h12M8 12h12M8 18h12"/><circle cx="4" cy="6" r="1"/><circle cx="4" cy="12" r="1"/><circle cx="4" cy="18" r="1"/></svg><span>Abläufe</span></button><button data-tab="open" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16v11H8l-4 4z"/></svg><span>Offen</span></button><button data-tab="ksp" aria-current="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 4h11l3 3v13H5z"/><path d="M9 10h6M9 14h6"/></svg><span>Konspekt</span></button></nav>
 <template id="kspTpl">
 
 <!-- ============ COVER + ZAHLEN ============ -->
@@ -1559,6 +1590,263 @@ const SKILLS=[
   gap:"",tip:""}
 ];
 
+const DICT_NAME="Wörterbuch DE–EN";
+/* Karteikarten: [Thema, Vorderseite, Rückseite]. Thema 8 = Wörterbuch (wird beim Build aus dem Konspekt ergänzt) */
+const KARTEN_SRC=[
+/* 1 Aktivität & Ruhe */
+[1,"Bewusstsein – Definition (Keller 2023)","Gesamtheit aller psychischen Vorgänge (Gedanken, Gefühle, Wahrnehmungen) + Wissen um das eigene „Ich“"],
+[1,"Quantitative Bewusstseinsstörungen – Reihenfolge","Benommenheit → Somnolenz → Sopor → Koma"],
+[1,"Somnolenz","Schläfrig, durch EINFACHE Reize erweckbar"],
+[1,"Sopor","Schläft, nur durch STARKE Reize (z. B. Schmerz) erweckbar"],
+[1,"Koma","Bewusstlos, reaktionslos, keine physiologischen Reflexe"],
+[1,"Qualitative Bewusstseinsstörungen (3)","Eintrübung (Umwelt + Ich nicht verbunden) · Einengung (Fokus auf wenige Themen) · Verschiebung (subjektiv erweitert, Halluzinogene)"],
+[1,"GCS – Kategorien und Maximalpunkte","Augenöffnen 4 · Sprache 5 · Motorik 6 → Summe 3–15"],
+[1,"GCS – Augenöffnen (4–1)","4 spontan · 3 auf Ansprache · 2 auf Schmerzreiz/Druck · 1 keines"],
+[1,"GCS – Sprache (5–1)","5 orientiert · 4 verwirrt · 3 unverständliche Wörter · 2 unverständliche Laute · 1 keine"],
+[1,"GCS – Motorik (6–1)","6 befolgt Aufforderungen · 5 gezielte Abwehr · 4 ungezielte Abwehr · 3 Beugesynergien · 2 Strecksynergien · 1 keine"],
+[1,"GCS – Ablauf (Teasdale 2015)","Prüfen → Beobachten → Stimulieren (akustisch, dann Fingerspitze/Trapezius/Foramen supraorbitale) → nach HÖCHSTER Reaktion einstufen; nicht beurteilbar = NT"],
+[1,"Schlafkriterien (4)","Geschlossene Augen · ruhige Atmung · verminderte Reaktion auf Reize · Erweckbarkeit"],
+[1,"Schlaf-Wach-Zentrum liegt im …","Hirnstamm"],
+[1,"Schlafphase N2","Leichter Schlaf, längste Phase ~50 %, Schlafspindeln, K-Komplexe"],
+[1,"Schlafphase N3","Tiefschlaf, Deltawellen, 20–25 %, sehr schwer erweckbar"],
+[1,"REM-Schlaf","Augenbewegungen, Muskeltonus stark ↓, „Traumphase“, 10–15 min"],
+[1,"Verteilung der Schlafphasen über die Nacht","1. Nachthälfte mehr Tiefschlaf, 2. Nachthälfte mehr REM; jeder Zyklus endet mit REM"],
+[1,"Normwerte Schlaf Erwachsene","5–9 h · Latenz 1–20 min · 4–7 Zyklen à ~90 min · Tiefschlaf ~20 % · REM ~20 %"],
+[1,"Schlaftypen","Monophasisch (1 Block) · biphasisch (2, z. B. + Mittagsschlaf) · polyphasisch (mehrere)"],
+[1,"Parasomnien – Beispiele","Schlafwandeln, Pavor nocturnus"],
+[1,"Schlafanamnese – 4 Punkte","Qualität/Dauer · Schlafmittel · Störfaktoren · Rituale/fördernde Maßnahmen"],
+[1,"Schlaffördernde Maßnahmen (Skript)","Melisse-/Hopfentee, warme Milch mit Honig, Baldrian, Aromapflege, ASE, warmes Fußbad, Basale Stimulation/Snoezelen, warmer Bauchwickel"],
+[1,"Nachteile von Hypnotika","Verändertes Schlafmuster, Überhang, Rebound-Insomnie, Toleranz, Abhängigkeit, Atemdepression, paradoxe Reaktion, Gedächtnisstörung, Muskelrelaxation (Sturz), Wechselwirkungen"],
+[1,"ASE – Ziel & Anordnung","Gleichmäßige, ruhige, tiefe Atmung; KEINE ärztliche Anordnung nötig (Basale Stimulation)"],
+[1,"ASE – Kontraindikationen","Offene/schmerzende Haut am Rücken, Rippenserienbruch, nach Thorax-OP"],
+/* 2 Hygiene */
+[2,"Wirksamste Einzelmaßnahme gegen Infektionsketten","Hygienische Händedesinfektion"],
+[2,"Händedesinfektion – Menge & Zeit","3–6 ml (2–4 Hübe) auf TROCKENE Hände, mind. 30 s feucht halten"],
+[2,"Keimreduktion Desinfektion vs. Waschen","Desinfektion 5 log-Stufen (99,999 %) · Waschen nur 1–2 log-Stufen"],
+[2,"EN 1500 – 6 Schritte","1 Handfläche/Handfläche · 2 Handfläche/Handrücken · 3 verschränkte gespreizte Finger · 4 Fingeraußenseiten · 5 Daumen kreisend · 6 Fingerkuppen kreisend"],
+[2,"5 Indikationen (WHO)","VOR Patientenkontakt · VOR aseptischer Tätigkeit · NACH infektiösem Material · NACH Patientenkontakt · NACH Patientenumgebung"],
+[2,"Voraussetzungen Händedesinfektion","Intakte Haut, kein Schmuck an Händen/Handgelenken, kurze Nägel ohne Lack/Kunstnägel"],
+[2,"Ersetzt der Handschuhwechsel die Desinfektion?","Nein. Handschuhdesinfektion wird auch nicht empfohlen."],
+[2,"Händewaschen – Indikationen (FRL 03)","Dienstbeginn/-ende, sichtbare Verschmutzung, nach Mittagspause, nach WC, vor Lebensmitteln, nach Desinfektion bei C. difficile"],
+[2,"C. difficile – Reihenfolge","Erst desinfizieren, dann waschen (Sporen mechanisch entfernen)"],
+[2,"Händewaschen – Abspülrichtung","Vom Handgelenk Richtung Fingerspitzen; Hahn mit Einmalhandtuch schließen"],
+[2,"Hautschutz vs. Hautpflege","Schutz VOR belastenden Tätigkeiten · Pflege NACH der Arbeit / Freizeit"],
+[2,"Dienstkleidung (FRL 20)","Mind. täglich + sofort bei Kontamination, geschlossen, nur im KH-Areal"],
+[2,"Kopftuch (FRL 20)","Täglich wechseln, gegen Verrutschen sichern, KEINE Stecknadeln, ≥ 60 °C waschen"],
+[2,"Händedesinfektion beim Umgang mit Wäsche (FRL 19)","Vor dem Betten · vor Reinwäsche · nach Schmutzwäsche"],
+[2,"Reinwäsche – Regeln","Geschlossen transportieren, staubgeschützt, First-in-first-out, Ablagefläche vorher desinfizieren, nie Boden/Schmutzwäsche"],
+[2,"Schmutzwäsche – Regeln","Direkt in den Sack am fahrbaren Sammler, beim Abwurf sortieren, nie auf Boden/Sessel, Sack nicht überfüllen, verschließen"],
+[2,"Täglicher Wäschewechsel bei …","Multiresistenten Erregern (MRE) und Ektoparasiten (Scabies, Läuse)"],
+[2,"Lagerung Schmutzwäschesäcke","Unreiner Arbeitsraum"],
+[2,"Kleinwäsche – Temperaturen","Thermisch 95 °C · chemothermisch 60 °C bzw. 40 °C"],
+[2,"Kopfkissen/Decken aufbereiten","Routinemäßig mind. alle 3 Monate; mit Encasing mind. 6 Monate"],
+[2,"Grundprinzipien Bettwäschewechsel","Hygiene, Intimsphäre, Sicherheit, Patientenorientierung, Kommunikation, Ergonomie, Wirtschaftlichkeit"],
+[2,"Varianten Bettwäschewechsel","Leeres Bett · liegende Person von der Seite · vom oberen/unteren Bettende"],
+[2,"5 Kriterien für die Auswahl jeder Pflegeintervention","Wirksamkeit · Wohlbefinden · Sicherheit · Wirtschaftlichkeit · Ökologie"],
+/* 3 Vitalfunktionen */
+[3,"Vitalparameter – Definition","Messgrößen lebenswichtiger Körperfunktionen"],
+[3,"Fieberkurve – Farben & Skala","Puls ROT (1 Zeile = 4 Schläge) · Temperatur BLAU (1 Zeile = 0,2 °C) · RR als Zahl sys/dia · erster Eintrag X"],
+[3,"Puls – Kriterien","Frequenz · Rhythmus · Qualität (hart/weich)"],
+[3,"Puls – Technik","A. radialis, Zeige-/Mittel-/Ringfinger (nie Daumen); 15 s × 4; bei Aufnahme/Arrhythmie 1 min"],
+[3,"Puls Erwachsene – Norm, Tachy, Brady","Norm 60–80 · Tachykardie > 100 · Bradykardie < 60"],
+[3,"Asystolie","Fehlende Herzkontraktion = Pulslosigkeit → Herzalarm"],
+[3,"Blutdruck – Normal, Hypertonie, Hypotonie","120/80 · Hypertonie > 140/90 · Hypotonie < 105/60 mmHg"],
+[3,"Manschette – Größe & Position","Ca. 2/3 des Oberarms, in Herzhöhe; Erstaufnahme beidseits"],
+[3,"Kein RR an Extremität mit …","Gefäßzugang, Lymphödem, Dialyseshunt, Knochen-/Muskel-/Bindegewebserkrankung, Hauterkrankung/frischer Verletzung"],
+[3,"Fehlerquellen RR","Luft zu schnell ablassen, zu wenig aufgepumpt, über Kleidung, falsche Breite, zu locker, Arm falsch, Lärm, Unruhe"],
+[3,"Eupnoe","Regelmäßig, gleichmäßig tief, geräuscharm, geruchlos"],
+[3,"Atemfrequenz Erwachsene / Kleinkind / NG (VF)","12–18 / 20–30 / 30–50 pro min"],
+[3,"Atmung zählen – wie?","Unbemerkt, 1 Minute, Finger nach dem Puls am Arm lassen"],
+[3,"Dyspnoe vs. Orthopnoe","Dyspnoe = subjektive Atemnot · Orthopnoe = starke Atemnot im Liegen"],
+[3,"Inspiratorischer vs. exspiratorischer Stridor","Inspiratorisch: Pseudokrupp · exspiratorisch: Asthma"],
+[3,"Sauerstoff ohne Anordnung?","O₂ = Medikament (ÄAO); im Notfall kurzfristig ohne Anordnung erlaubt"],
+[3,"Erstmaßnahmen Atemnot","Alarm, Arzt, Kleidung/Fenster öffnen, nicht allein lassen, OK hoch, Lippenbremse, O₂ lt. ÄAO, Vitalwerte, Doku"],
+[3,"Normaltemperatur / Hypothermie / Fieber","36,5–37,4 °C · < 36 °C · > 38,0 °C"],
+[3,"Temperaturstufen","Subfebril 37,5–38,0 · leicht 38,1–38,5 · mäßig 38,6–39,0 · hoch 39,1–39,9 · sehr hoch 40–42"],
+[3,"Fieber vs. Hyperthermie","Fieber = Sollwerterhöhung im Hypothalamus · Hyperthermie = ohne Sollwerterhöhung (z. B. Hitzeschlag)"],
+[3,"Wadenwickel – wann?","Nur in der Fieberhöhe"],
+[3,"Fieberanstieg – Maßnahmen","Frösteln/Schüttelfrost → wärmen, warme Getränke"],
+[3,"Lysis vs. Krisis","Lysis = langsamer Fieberabfall · Krisis = rascher Abfall, Kreislaufgefahr"],
+[3,"Fieber bei alten Menschen","Oft wenig Fieber, rasch Kreislaufprobleme, Durst ↓ → zum Trinken auffordern"],
+/* 4 Sicherheit */
+[4,"Wahrnehmung vs. Beobachtung","Wahrnehmung = Reize aufnehmen/verarbeiten · Beobachtung = zielgerichtete, systematische Wahrnehmung"],
+[4,"Wahrnehmungsprozess – 5 Schritte","Reizaufnahme/Umwandlung → Weiterleitung → Sortierung/Vergleich → Weiterleitung an andere Zentren (limbisch) → Reaktion"],
+[4,"Halo-Effekt","Eine Eigenschaft überstrahlt alle anderen"],
+[4,"Milde-Effekt","Sympathie beeinflusst die Beobachtung"],
+[4,"Effekt der zentralen Tendenz","Bewertungen immer im mittleren Bereich"],
+[4,"Rosenthal-Effekt","Einfluss durch das Urteil anderer"],
+[4,"Objektiv vs. subjektiv beobachtet","Objektiv = messbar (RR, Gewicht) · subjektiv → mit Skalen/Team objektivieren"],
+[4,"Sehbeeinträchtigung – Kernmaßnahmen","Anklopfen, Namen nennen, Verlassen ankündigen, Dinge am gleichen Platz, Türen schließen, normale Lautstärke, informieren"],
+[4,"Hörbeeinträchtigung – Kommunikation","Blickkontakt, Mund frei, langsam/deutlich, NICHT lauter, kurze Sätze, aufschreiben"],
+[4,"Hörgerät pfeift – Ursachen","Ohrpassstück falsch eingesetzt/zu klein, Schlauch kaputt, Zerumen"],
+[4,"Hörgerät – Don'ts","Wasser, Hitze (Föhn), Stöße, Chemikalien (Haarspray); vor Bestrahlung entfernen"],
+[4,"Nadelstichverletzung – Erstmaßnahmen","Auspressen, ausgiebig desinfizieren, Serologie/Blutabnahme, Meldung (AUVA + FH), Dokumentation"],
+[4,"Prävention Nadelstich","Kein Recapping; sofort in stichfesten Behälter vor Ort"],
+[4,"Pharmakokinetik vs. Pharmakodynamik","Kinetik: Körper → Wirkstoff · Dynamik: Wirkstoff → Körper"],
+[4,"Generika / INN","Generika = Kopien des Originals · INN = internationaler Freiname des Wirkstoffs"],
+[4,"Enterale Applikation","p.o., sublingual, bukkal, rektal"],
+[4,"Parenterale Applikation","s.c., i.c., i.m., i.v."],
+[4,"10-R-Regel","Person, Medikament, Dosierung, Applikationsform, Zeitpunkt, Anwendungsdauer, Aufbewahrung, Risikomanagement, Dokumentation, Entsorgung"],
+[4,"Richten – Kontrollen","3× kontrollieren (Herausnehmen, Entnahme, Zurückstellen) + 4-Augen-Prinzip; nie mit der Hand berühren"],
+[4,"Lagerung Arzneimittel","Abschließbar, 1× monatlich reinigen + Verfall prüfen, FIFO, nie umfüllen, Originalpackung + Beipackzettel"],
+[4,"Halbierte Tabletten, nicht gebraucht","Entsorgen"],
+[4,"BtM-Buch – Einträge","Bezeichnung, Menge, Datum, Patient:in, Unterschrift Arzt + Pflege, neuer Bestand"],
+[4,"Sturz – Definition","Person kommt unbeabsichtigt auf dem Boden oder einer tieferen Ebene zu liegen"],
+[4,"FbM laut Sturzleitlinie","Senken Sturzrisiko NICHT; nur Einzelfall, gelindestes Mittel, Anordnung Arzt/DGKP, dokumentieren, evaluieren, Angehörige (HeimAufG/UbG)"],
+[4,"Alarmsysteme (Bettsensor)","Zur Sturzprävention nicht empfohlen – aber gelindere Alternative zu FbM"],
+/* 5 Körperpflege & Thrombose */
+[5,"Funktionen der Haut","Schutz, Temperaturregelung, Sinneswahrnehmung, Aufnahme/Ausscheidung, Speicher, Formgebung, Kommunikation"],
+[5,"Normale Hauttemperatur","28–33 °C"],
+[5,"Hauttypen","Fettig (seborrhoisch) · trocken (sebostatisch) · Mischhaut (T-Zone fettig)"],
+[5,"Turgor prüfen","Faltentest am Handrücken – stehende Falte → Exsikkose"],
+[5,"Ikterus physiologisch / pathologisch","Neugeborene, Karotten / Leber-, Gallenerkrankung"],
+[5,"Distanzzonen (innen → außen)","Intim · persönlich · sozial · öffentlich"],
+[5,"Privatsphäre schützen","Anklopfen, Sichtschutz, Mitpatient:innen hinausbitten, nur nötig aufdecken, Maßnahmen bündeln, lüften"],
+[5,"Körperliche Scham – ab wann?","Ca. ab dem 6. Lebensjahr (Scham für Verbotenes ab 2. Lj.)"],
+[5,"Heusinger & Dummert 2017 – Hauptergebnis","Frauen wünschen eine weibliche Pflegekraft, setzen es aber selten durch"],
+[5,"Ziele der Körperpflege","Wohlbefinden, Wahrnehmung/Kommunikation, Selbstpflege/Ressourcen, Krankheiten vorbeugen"],
+[5,"Handlungsschema GKW im Bett","Vorbereitung → Durchführung → Nachbereitung → Evaluation"],
+[5,"Augen reinigen – Richtung","Von außen nach innen"],
+[5,"O/W vs. W/O","O/W: normale bis fettige Haut · W/O: trockene Haut"],
+[5,"Intertrigo – Definition","Oberflächliche Entzündung in Hautfalten durch Feuchtigkeit, Wärme, Verunreinigung"],
+[5,"Intertrigoprophylaxe","3× tgl. beobachten, 2× tgl. klares Wasser, tupfen, Hautschutz, Leinen/Kompressen faltenfrei einlegen"],
+[5,"Goldstandard Mundpflege","Zähne putzen (DNQP 2023)"],
+[5,"Zahnpasta Kinder","Bis 2 J. reiskorngroß · 2–6 J. erbsengroß · ab 6 J. Bürstenkopf; ausspucken, nicht ausspülen"],
+[5,"Zahnprothese nachts","Trocken in der Prothesenschale (Candida ↓)"],
+[5,"Soor","Candida der Mundschleimhaut, weiße schwer abwischbare Beläge"],
+[5,"Parotitisprophylaxe","Speichelfluss anregen: kauen, saure Bonbons, Eiswürfel, Massage, trinken"],
+[5,"Virchow-Trias","Verlangsamte Strömung · Gefäßwandschaden · Gerinnung ↑"],
+[5,"TVT-Zeichen","Druckschmerz (Wade, Fußsohle, Kniekehle, Leiste), Schwellung, Rötung/livide, Überwärmung"],
+[5,"TVT-Verdacht – Vorgehen","Arzt verständigen, Mobilisation nur nach Rücksprache (Lungenembolie)"],
+[5,"Thromboseprophylaxe – Basismaßnahmen","Frühmobilisation, Bewegungsübungen, Flüssigkeit, MTS lt. AA"],
+[5,"MTS – vor dem Anlegen","15–20 min liegen; Knöchel-, Wadenumfang und Länge messen"],
+[5,"MTS vs. Kompressionsstrumpf","MTS: Prophylaxe, Seriengröße, weiß · Kompressionsstrumpf: Therapie, verordnet, 4 Klassen"],
+[5,"GAPS-Studie (Schellong 2020)","Strümpfe zusätzlich zu Heparin: kein Zusatznutzen bei elektiver OP"],
+/* 6 Ernährung & Ausscheidung */
+[6,"EDEKA-Regel","Empfindlichkeiten · Diätetische Kost · Einschränkungen · Krankheitsbedingte Kost · Allergien"],
+[6,"BMI – Formel & Normalbereich","kg / m² · normal 18,5–24,9"],
+[6,"BMI-Klassen","< 18,5 Untergewicht · 25–29,9 Präadipositas · 30–34,9 / 35–39,9 / ≥ 40 Adipositas I/II/III"],
+[6,"Mangelernährung – Definition","Anhaltendes Defizit an Energie/Nährstoffen durch längere negative Bilanz"],
+[6,"Screening Mangelernährung","NRS, MUST, GMS, MNA"],
+[6,"Essen eingeben – Grundregeln","Neben der Person sitzen, von vorne unten, Mund leer abwarten, Konsistenzen nicht mischen, Serviette, Zeit"],
+[6,"Aspirationsprophylaxe – Kern","OK hoch während UND nach dem Essen, dabeibleiben, Konsistenz anpassen/eindicken, Mundpflege danach"],
+[6,"Aspiration – Sofortmaßnahmen","Vorbeugen + husten, Heimlich, SpO₂, beobachten, Arzt, ggf. CPR"],
+[6,"ThickenUP – Messlöffel je 200 ml","Stufe 1 ×1 · Stufe 2 Nektar ×2 · Stufe 3 Honig ×4 · Stufe 4 Pudding ×6"],
+[6,"IDDSI","International Dysphagia Diet Standardisation Initiative, Stufen 0–7"],
+[6,"Dehydratation vs. Exsikkose","Dehydratation = Wasserverlust · Exsikkose = Folge mit Elektrolytstörung, Schockgefahr"],
+[6,"Dehydratation – Zeichen","Durst, trockene Zunge, kein Speichelsee, stehende Hautfalte, Urin ↓, Tachykardie, Hypotonie, Verwirrtheit"],
+[6,"Flüssigkeit pro Tag (Bilanz)","Ca. 2,5 l Zufuhr = Abgabe (Urin 1,5 · Haut/Atmung 0,9 · Stuhl 0,1)"],
+[6,"Obstipationsprophylaxe","Trinken, bewegen, Ballaststoffe, Sauermilch, feste Zeiten, Drang nie unterdrücken, Sitzposition, Bauchmassage"],
+[6,"Bristol-Stuhlskala","1 harte Kügelchen … 4 glatte Wurst (normal) … 7 wässrig"],
+[6,"Stuhl / Urin – Normalmengen","Stuhl 100–500 g/Tag · Urin pro Miktion 200–400 ml"],
+[6,"Mittelstrahlurin","Erste ~3 s verwerfen, 20–40 ml auffangen, Gefäß berührt den Körper nicht"],
+[6,"24-h-Sammelurin","1. Morgenurin verwerfen + Uhrzeit, alles sammeln inkl. Morgenurin am Folgetag, kühl/dunkel, Menge, schwenken, Probe"],
+[6,"Harnstreifen – Ablesezeit & Nitrit","60–120 s · Nitrit + → Harnwegsinfekt"],
+[6,"BVWK – Grundregeln","Geschlossenes System, Beutel nie über Blasenniveau, 1–2× tgl. entleeren, trinken"],
+[6,"BVWK – Desinfektionsmittel","Pflege: Schleimhaut · Ablassen: Fläche · Probe an Membran: Haut (S-F-H)"],
+[6,"Urin aus dem BVWK-Beutel erlaubt bei …","Nur 24-h-Sammelurin"],
+[6,"Klistier – Lage, Tiefe, Haltezeit","Linksseitenlage · 7–10 cm · mind. 5 min halten"],
+[6,"Belastungsinkontinenz","Urinverlust bei Druckerhöhung (Husten, Heben); Verschlussstörung"],
+[6,"Dranginkontinenz","Imperativer Harndrang bei geringer Füllung (Detrusor)"],
+[6,"Funktionelle Inkontinenz","Toilette nicht rechtzeitig erreicht (Kognition/Mobilität), Harntrakt intakt"],
+[6,"Inkontinenz bei chronischer Retention","Restharn, Blase läuft über, schmerzlos (z. B. Prostata)"],
+[6,"Blasentraining vs. Toilettentraining","Blasen: Intervalle steigern · Toiletten: 15 min vor gewohnter Ausscheidung (Miktionsprotokoll)"],
+[6,"IAD vs. Dekubitus","IAD: Feuchtigkeit + Harn/Stuhl, diffuse Ränder · Dekubitus: Druck/Scherkräfte"],
+[6,"Erbrechen – Sofortmaßnahmen","Aufrecht oder Seitenlage, Nierentasse, nicht allein lassen, Prothese raus, Wunde stützen, danach Mundpflege"],
+/* 7 Pädiatrie */
+[7,"Frühgeboren / reif / übertragen","< 37+0 SSW · 37+0–41+6 · ≥ 42+0"],
+[7,"Neugeborenenphase","Bis zum 28. Lebenstag"],
+[7,"Haut-pH Säugling (Handout)","Ca. 6,7 (Erwachsene 5–6,5) → Abwehr ↓"],
+[7,"Käseschmiere – Funktionen","Gleiten bei Geburt, Wärmeschutz, antibakteriell"],
+[7,"Nabelschnurrest fällt ab nach …","3–14 Tagen"],
+[7,"Nabelpflege","Trocken & sauber, bei Schmutz Wasser + trocknen, Windel unter dem Nabel umschlagen, Rötung → AO"],
+[7,"Windeldermatitis – ABCDE","Air · Barrier · Clean · Diapers · Education"],
+[7,"Badewasser Säugling","36–38 °C, 10–15 cm hoch (Herzfehler: nur bis Nabel)"],
+[7,"Säuglingsbad – Füße","Füße zuerst ins Wasser, zuletzt heraus; Widerstand spüren"],
+[7,"Genitalreinigung Richtung","Vom Schambein zum Anus"],
+[7,"Raumtemperatur Säuglingswaschung","Mind. 22 °C"],
+[7,"Vorhaut beim Buben","Bis 3 J. nicht zurückschieben (Verengung physiologisch)"],
+[7,"KIH","Kinästhetik Infant Handling – bewegungsorientiert, fördert Bewegung und Körperwahrnehmung"],
+[7,"Geburtsmaße (Mittel)","3500 g · 50 cm · KU 35 cm (2500–4200 g, 48–54 cm, 33–37 cm)"],
+[7,"Perzentilen – Normalbereich","3.–97. Perzentile; 50. = Durchschnitt"],
+[7,"Gewichtsverlust Neugeborenes","Bis 7 % (max. 10 %) in 3–5 Tagen; Geburtsgewicht zurück bis Tag 10–14"],
+[7,"Pulsmessung Säugling – wo?","Fontanelle, A. brachialis, A. temporalis oder Auskultation; Carotis nie beidseits"],
+[7,"Merksatz Vitalwerte Kind","Je jünger: RR niedriger, Puls und AF höher"],
+[7,"Puls Neugeborenes (Pädiatrie-Folie)","100–200/min (VF-Folie: 120–140)"],
+[7,"Temperatur Säugling – Methode","Rektal (Vaseline, Oberschenkel fixieren); Ohr beim Säugling unzuverlässig"],
+[7,"Fieber Kind (S3)","< 3 Monate ≥ 38,0 °C → ärztlich abklären · > 3 Monate ≥ 38,5 °C; axillar nicht empfohlen"],
+[7,"Frühkindliche Reflexe","Moro (Umklammerung, 1. Atemzug), Greifreflex, Schreitreflex"],
+[7,"Meilenstein vs. Grenzstein","Meilenstein = erstes Auftreten · Grenzstein = ~90 % der Kinder erreicht"],
+[7,"Milchzähne","20, vollständig mit 2,5–3 J.; erste Schneidezähne 6.–8. Monat"],
+[7,"Beikost – Beginn","Nicht vor der 17. und nicht nach der 26. Woche"],
+[7,"Vitamin D3 Säugling","400 IE täglich bis Ende 12. Lebensmonat"],
+[7,"Pre- vs. 1er-Nahrung","Pre: nur Laktose, ad libitum, ganzes 1. Lj. · 1er: + Stärke, nicht ad libitum"],
+[7,"Muttermilch – Haltbarkeit","Raum 2–4 h · Kühlschrank 3 Tage · Gefrierschrank 6 Monate"],
+[7,"Fläschchen – Temperatur & Haltung","37 °C (Handgelenk), Flasche steil, Sauger immer gefüllt, aufstoßen lassen"],
+[7,"GÖR Säugling – Maßnahmen","OK-Hochlagerung, kleine Mahlzeiten, Eindicken lt. ÄAO, aufstoßen"],
+[8, "Abwehr, gezielte", "localising to pain"],
+[8, "Ansprache", "verbal stimulus"],
+[8, "anreichen (Essen)", "to feed, hand food"],
+[8, "Aspiration", "aspiration"],
+[8, "Ausscheidung", "elimination"],
+[8, "Beikost", "complementary food"],
+[8, "Bettwäschewechsel", "bed linen change"],
+[8, "Betäubungsmittel (BtM)", "narcotics"],
+[8, "Blasenverweilkatheter (BVWK)", "indwelling urinary catheter"],
+[8, "Bewusstseinsstörung", "impaired consciousness"],
+[8, "Dehydratation / Exsikkose", "dehydration / exsiccosis"],
+[8, "Dickungsmittel, eindicken", "thickener, to thicken"],
+[8, "Dienstkleidung", "work clothing"],
+[8, "Durchfall (Diarrhoe)", "diarrhoea"],
+[8, "Einreibemethode", "rub-in technique"],
+[8, "Einwirkzeit", "contact time"],
+[8, "Erbrechen (Emesis)", "vomiting"],
+[8, "Fieberkurve", "vital signs chart"],
+[8, "Flüssigkeitsbilanz", "fluid balance"],
+[8, "freiheitsbeschränkende Maßnahme", "restraint"],
+[8, "Ganzkörperwaschung", "full bed bath"],
+[8, "Händedesinfektion", "hand disinfection"],
+[8, "Harndrang", "urge to urinate"],
+[8, "Harninkontinenz", "urinary incontinence"],
+[8, "Hautfalte, stehende", "tenting skin fold"],
+[8, "Hörgerät", "hearing aid"],
+[8, "Intimpflege", "perineal care"],
+[8, "Käseschmiere", "vernix caseosa"],
+[8, "Klistier / Einlauf", "enema"],
+[8, "Kopfumfang", "head circumference"],
+[8, "Leibschüssel / Harnflasche", "bedpan / urinal"],
+[8, "Mangelernährung", "malnutrition"],
+[8, "Manschette", "cuff"],
+[8, "Mittelstrahlurin", "midstream urine"],
+[8, "Mundpflege", "oral care"],
+[8, "Nabelschnurrest", "umbilical stump"],
+[8, "Nadelstichverletzung", "needlestick injury"],
+[8, "Obstipation", "constipation"],
+[8, "Oberkörperhochlagerung (OK hoch)", "upper body elevated"],
+[8, "Ohrspeicheldrüse (Parotis)", "parotid gland"],
+[8, "Perzentile", "percentile"],
+[8, "Pflegekraft / Pflegeperson (PP)", "nurse"],
+[8, "Rasur", "shave"],
+[8, "Recapping", "recapping a needle"],
+[8, "Reinwäsche / Schmutzwäsche", "clean / soiled linen"],
+[8, "Säugling", "infant"],
+[8, "Schamgefühl", "sense of shame"],
+[8, "Schluckstörung (Dysphagie)", "dysphagia"],
+[8, "Schüttelfrost", "chills"],
+[8, "Sehbeeinträchtigung", "visual impairment"],
+[8, "Soor", "thrush"],
+[8, "Sturz", "fall"],
+[8, "Thromboseprophylaxestrumpf (MTS)", "anti-embolism stocking"],
+[8, "Tellerprotokoll", "plate protocol"],
+[8, "Trinkprotokoll", "drinking log"],
+[8, "Verweilkatheter-Beutel ablassen", "empty the drainage bag"],
+[8, "Wadenwickel", "calf wraps"],
+[8, "Wäschesack", "laundry bag"],
+[8, "Windeldermatitis", "diaper rash"],
+[8, "Zahnprothese", "denture"],
+[8, "Zungenstoßreflex", "tongue-thrust reflex"]
+];
+
 
 /* ---------- app ---------- */
 const store={get(k,d){try{const v=localStorage.getItem(k);return v?JSON.parse(v):d}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}},del(k){try{localStorage.removeItem(k)}catch(e){}}};
@@ -1647,6 +1935,9 @@ function home(){
   <section class="panel resume"><div class="qhead"><h2>Praktische Skills</h2><span class="stats">${Object.keys(skDone).filter(id=>SKILLS.some(s=>s.id===id)).length}/${SKILLS.length} sicher</span></div>
     <p class="sub">Die Abschlussprüfung = ein Skill vor Prüfer:innen + Fragen. Abläufe, worauf geachtet wird, typische Fragen und Lücken der Unterlagen.</p>
     <div class="row"><button class="btn" id="sk-open">Skills öffnen</button><button class="btn ghost" id="sk-sim2">Zufalls-Skill ziehen</button></div></section>
+  <section class="panel"><div class="qhead"><h2>Karteikarten</h2><span class="stats">${(()=>{const c=kkCounts(kkPool());return (c.due+c.learn)+" fällig · "+c.neu+" neu"})()}</span></div>
+    <p class="sub">${KARTEN.length} Karten mit Wiederholung wie in Anki: umdrehen, bewerten, die App plant den nächsten Termin.</p>
+    <div class="row"><button class="btn" id="kk-open">Karten lernen</button></div></section>
   <section class="panel">
     <div class="qhead"><h2>Themen</h2>
       <div class="row tight"><button class="btn ghost sm" id="all">alle</button><button class="btn ghost sm" id="none">keine</button></div></div>
@@ -1719,6 +2010,7 @@ function home(){
   const rko=app.querySelector("#rk-open"); if(rko)rko.onclick=()=>ranking();
   app.querySelector("#k-fallen").onclick=()=>konspekt("k11");
   app.querySelector("#sk-open").onclick=()=>skills();
+  app.querySelector("#kk-open").onclick=()=>karten();
   app.querySelector("#sk-sim2").onclick=()=>skSim();
 }
 function start(list,mode,timed,exam){
@@ -2115,10 +2407,131 @@ function skSimView(){
 }
 /* ---------- Tab-Leiste (One UI, Daumenbereich) ---------- */
 function setTab(t){ document.querySelectorAll(".tabbar button").forEach(b=>b.setAttribute("aria-current",b.dataset.tab===t?"page":"false")); }
-[["home","home"],["checklists","seq"],["seqStart","seq"],["oqStart","open"],["konspekt","ksp"],["mtStart","home"],["start","home"],["skills","skills"],["skSim","skills"],["ranking","home"]]
+[["home","home"],["checklists","seq"],["seqStart","seq"],["oqStart","open"],["konspekt","ksp"],["mtStart","home"],["start","home"],["skills","skills"],["skSim","skills"],["karten","cards"],["kkStart","cards"],["kkShow","cards"],["ranking","home"]]
   .forEach(([f,tab])=>{ const orig=window[f]; window[f]=function(){ setTab(tab); return orig.apply(this,arguments); }; });
 document.querySelectorAll(".tabbar button").forEach(b=>b.onclick=()=>{ const t=b.dataset.tab;
-  if(t==="home")home(); else if(t==="skills")skills(); else if(t==="seq")checklists(); else if(t==="open")oqStart(OPEN.filter(o=>o.ex).concat(shuffle(OPEN.filter(o=>!o.ex)))); else konspekt(); });
+  if(t==="home")home(); else if(t==="skills")skills(); else if(t==="seq")checklists(); else if(t==="cards")karten(); else if(t==="open")oqStart(OPEN.filter(o=>o.ex).concat(shuffle(OPEN.filter(o=>!o.ex)))); else konspekt(); });
+
+/* ---------- Karteikarten (Anki-ähnliche Wiederholung) ---------- */
+function kkHash(s){ let h=5381; for(let i=0;i<s.length;i++)h=((h<<5)+h+s.charCodeAt(i))|0; return "k"+(h>>>0).toString(36); }
+const KARTEN=KARTEN_SRC.map(([t,f,b])=>({id:kkHash(t+"|"+f),t,f,b}));
+const KDECKS=Object.assign({},TOPICS,{8:DICT_NAME});
+const MINUTE=6e4, DAY=864e5;
+let KS=store.get("guk_kk",{});
+let kkDecks=store.get("guk_kkdecks",Object.keys(KDECKS).map(Number));
+function kkToday(){ const d=new Date(); return d.getFullYear()+"-"+(d.getMonth()+1)+"-"+d.getDate(); }
+function kkNewLimit(){ return store.get("guk_kknew",30); }
+function kkNewDone(){ const x=store.get("guk_kkday",{}); return x.d===kkToday()?x.n:0; }
+function kkNewInc(){ store.set("guk_kkday",{d:kkToday(),n:kkNewDone()+1}); }
+function kkPool(){ return KARTEN.filter(c=>kkDecks.includes(c.t)); }
+function kkCounts(cards){ const now=Date.now(); let neu=0,due=0,learn=0;
+  cards.forEach(c=>{const s=KS[c.id]; if(!s)neu++; else if(s.d<=now){ if(s.i<1)learn++; else due++; }}); return {neu,due,learn}; }
+/* Planung wie Anki (vereinfacht): Lernschritte 1/6/10 min, dann Tage × Leichtigkeit */
+function kkNext(c,g){
+  const s=KS[c.id]||{i:0,e:2.5,r:0,l:0,st:0}; let {i,e,r,l,st}=s; let ms;
+  if(i<1){
+    if(g===0){ ms=MINUTE; st=0; }
+    else if(g===1){ ms=6*MINUTE; }
+    else if(g===2){ if(st>=1){ i=s.li?Math.max(1,Math.round(s.li*0.5)):1; ms=i*DAY; } else { st=1; ms=10*MINUTE; } }
+    else { i=Math.max(4,s.li?Math.round(s.li*0.7):4); ms=i*DAY; e=Math.min(3,e+0.15); }
+  } else {
+    if(g===0){ l++; e=Math.max(1.3,e-0.2); return {i:0,li:i,e,r:r+1,l,st:1,d:Date.now()+10*MINUTE,ms:10*MINUTE}; }
+    if(g===1){ e=Math.max(1.3,e-0.15); i=Math.max(i+1,Math.round(i*1.2)); }
+    else if(g===2){ i=Math.max(i+1,Math.round(i*e)); }
+    else { e=e+0.15; i=Math.max(i+2,Math.round(i*e*1.3)); }
+    ms=i*DAY;
+  }
+  return {i,li:s.li,e,r:r+1,l,st,d:Date.now()+ms,ms};
+}
+function kkFmt(ms){ if(ms<DAY){ const m=Math.round(ms/MINUTE); return m<60?(m<1?"<1 min":m+" min"):Math.round(m/60)+" h"; }
+  const d=Math.round(ms/DAY); return d<30?d+" T":d<365?(Math.round(d/3)/10).toString().replace(".",",")+" Mo":(Math.round(d/36.5)/10).toString().replace(".",",")+" J"; }
+const KK={q:[],cur:null,flip:false,cram:false,done:0};
+function karten(){
+  hideSide();
+  const pool=kkPool(), c=kkCounts(pool), nl=kkNewLimit(), left=Math.max(0,nl-kkNewDone());
+  const newToday=Math.min(c.neu,left);
+  app.innerHTML=`
+  <header class="head"><div class="status">Wiederholung wie in Anki</div><h1><span class="x">Kartei</span>karten</h1>
+   <p class="sub">${KARTEN.length} Karten: Fakten, Zahlen und Begriffe aus den Unterlagen. Karte antippen zum Umdrehen, dann ehrlich bewerten – die App plant die nächste Wiederholung.</p></header>
+  <section class="panel">
+    <div class="kk-sum">
+      <div><b class="kk-n">${newToday}</b><span>Neu heute</span></div>
+      <div><b class="kk-l">${c.learn}</b><span>Lernen</span></div>
+      <div><b class="kk-d">${c.due}</b><span>Fällig</span></div>
+    </div>
+    <div class="row"><button class="btn" id="kk-go" ${newToday+c.learn+c.due?"":"disabled"}>Lernen starten</button><button class="btn ghost" id="kk-cram">Alle durchblättern</button></div>
+    ${newToday+c.learn+c.due?"":`<p class="sub">Für heute ist nichts mehr fällig. „Alle durchblättern“ geht immer – ohne die Planung zu ändern.</p>`}
+  </section>
+  <section class="panel">
+    <div class="qhead"><h2>Stapel</h2><div class="row tight"><button class="chip" id="kk-all">alle</button><button class="chip" id="kk-none">keine</button></div></div>
+    <div class="chips">${Object.keys(KDECKS).map(t=>{const n=KARTEN.filter(x=>x.t==t).length, cc=kkCounts(KARTEN.filter(x=>x.t==t));
+      return `<button class="chip" data-d="${t}" aria-pressed="${kkDecks.includes(+t)}">${esc(KDECKS[t])} <span class="n">${cc.due+cc.learn?cc.due+cc.learn+" fällig · ":""}${n}</span></button>`}).join("")}</div>
+  </section>
+  <section class="panel">
+    <div class="qhead"><h2>Neue Karten pro Tag</h2><span class="stats">heute ${kkNewDone()} gelernt</span></div>
+    <div class="chips">${[20,30,50,9999].map(n=>`<button class="chip" data-nl="${n}" aria-pressed="${nl===n}">${n>999?"alle":n}</button>`).join("")}</div>
+    <p class="sub">Prüfung am 19.11.: lieber „alle“ oder 50 wählen. Fortschritt bleibt nur in diesem Browser.</p>
+    <div class="row"><button class="btn ghost sm" id="kk-reset">Fortschritt der Karten zurücksetzen</button></div>
+    <div id="kk-confirm" hidden class="row"><span class="stats">Wirklich alles zurücksetzen?</span><button class="btn sm" id="kk-yes">Ja, zurücksetzen</button><button class="btn ghost sm" id="kk-no">Abbrechen</button></div>
+  </section>`;
+  const $=x=>app.querySelector(x);
+  $("#kk-go").onclick=()=>kkStart(false);
+  $("#kk-cram").onclick=()=>kkStart(true);
+  app.querySelectorAll("[data-d]").forEach(b=>b.onclick=()=>{const t=+b.dataset.d; kkDecks=kkDecks.includes(t)?kkDecks.filter(x=>x!==t):kkDecks.concat(t); store.set("guk_kkdecks",kkDecks); karten();});
+  $("#kk-all").onclick=()=>{kkDecks=Object.keys(KDECKS).map(Number);store.set("guk_kkdecks",kkDecks);karten();};
+  $("#kk-none").onclick=()=>{kkDecks=[];store.set("guk_kkdecks",kkDecks);karten();};
+  app.querySelectorAll("[data-nl]").forEach(b=>b.onclick=()=>{store.set("guk_kknew",+b.dataset.nl);karten();});
+  $("#kk-reset").onclick=()=>{$("#kk-confirm").hidden=false;};
+  $("#kk-no").onclick=()=>{$("#kk-confirm").hidden=true;};
+  $("#kk-yes").onclick=()=>{KS={};store.set("guk_kk",KS);store.set("guk_kkday",{});karten();};
+  window.scrollTo(0,0);
+}
+function kkStart(cram){
+  const pool=kkPool(); KK.cram=cram; KK.done=0; KK.flip=false;
+  if(cram){ KK.q=shuffle(pool.map(c=>c.id)); }
+  else{ const now=Date.now(); const due=pool.filter(c=>KS[c.id]&&KS[c.id].d<=now).sort((a,b)=>KS[a.id].d-KS[b.id].d).map(c=>c.id);
+    const left=Math.max(0,kkNewLimit()-kkNewDone()); const neu=pool.filter(c=>!KS[c.id]).slice(0,left).map(c=>c.id);
+    KK.q=[]; let i=0,j=0; while(i<due.length||j<neu.length){ if(i<due.length)KK.q.push(due[i++]); if(i<due.length)KK.q.push(due[i++]); if(j<neu.length)KK.q.push(neu[j++]); } }
+  KK.total=KK.q.length; kkShow();
+}
+function kkShow(){
+  hideSide();
+  if(!KK.q.length){ app.innerHTML=`<section class="panel"><h2>${KK.cram?"Stapel durch":"Geschafft für jetzt"}</h2><p class="sub">${KK.done} Karten bewertet.${KK.cram?"":" Fällige Karten kommen zum geplanten Zeitpunkt wieder."}</p>
+    <div class="row"><button class="btn" id="kk-back">Zur Übersicht</button>${KK.cram?`<button class="btn ghost" id="kk-again">Nochmal mischen</button>`:""}</div></section>`;
+    app.querySelector("#kk-back").onclick=()=>karten(); if(KK.cram)app.querySelector("#kk-again").onclick=()=>kkStart(true); window.scrollTo(0,0); return; }
+  const c=KARTEN.find(x=>x.id===KK.q[0]); KK.cur=c;
+  const cnt=KK.cram?null:(()=>{let n=0,l=0,d=0; KK.q.forEach(id=>{const s=KS[id]; if(!s)n++; else if(s.i<1)l++; else d++;}); return {n,l,d};})();
+  const s=KS[c.id];
+  app.innerHTML=`
+  <div class="row" style="justify-content:space-between"><button class="btn ghost sm" id="kk-x">← Übersicht</button>
+   ${KK.cram?`<span class="stats">${KK.done} / ${KK.total} · ohne Planung</span>`:`<span class="kk-cnt"><b class="kk-n">${cnt.n}</b><b class="kk-l">${cnt.l}</b><b class="kk-d">${cnt.d}</b></span>`}</div>
+  <button class="kk-card${KK.flip?" back":""}" id="kk-card" aria-label="Karte umdrehen">
+    <span class="kk-deck">${esc(KDECKS[c.t])}${!KK.cram&&!s?" · neu":""}</span>
+    <span class="kk-f">${esc(c.f)}</span>
+    ${KK.flip?`<span class="kk-hr"></span><span class="kk-b">${esc(c.b)}</span>`:`<span class="kk-hint">Tippen zum Umdrehen</span>`}
+  </button>
+  ${KK.flip?(KK.cram?`<div class="kk-rate two"><button class="kk-g g0" data-g="0"><b>Nicht gewusst</b></button><button class="kk-g g2" data-g="2"><b>Gewusst</b></button></div>`:
+   `<div class="kk-rate">${["Nochmal","Schwer","Gut","Einfach"].map((n,g)=>`<button class="kk-g g${g}" data-g="${g}"><span>${kkFmt(kkNext(c,g).ms)}</span><b>${n}</b></button>`).join("")}</div>`)
+   :`<div class="row"><button class="btn kk-show" id="kk-flip">Antwort zeigen</button></div>`}
+  <p class="stats kk-keys">Tastatur: Leertaste = umdrehen${KK.cram?"":" · 1–4 = bewerten"}</p>`;
+  const $=x=>app.querySelector(x);
+  $("#kk-x").onclick=()=>karten();
+  $("#kk-card").onclick=()=>{KK.flip=!KK.flip;kkShow();};
+  if($("#kk-flip"))$("#kk-flip").onclick=()=>{KK.flip=true;kkShow();};
+  app.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>kkRate(+b.dataset.g));
+}
+function kkRate(g){
+  const c=KK.cur; if(!c)return; KK.q.shift(); KK.done++; KK.flip=false;
+  if(KK.cram){ if(g===0)KK.q.push(c.id); }
+  else{ const wasNew=!KS[c.id]; const n=kkNext(c,g); delete n.ms; KS[c.id]=n; store.set("guk_kk",KS); if(wasNew)kkNewInc();
+    if(n.d-Date.now()<=20*MINUTE){ const pos=Math.min(KK.q.length,g===0?3:g===1?6:10); KK.q.splice(pos,0,c.id); } }
+  kkShow(); window.scrollTo(0,0);
+}
+document.addEventListener("keydown",e=>{
+  if(!KK.cur||!document.getElementById("kk-card")||e.target.closest("input,textarea"))return;
+  if(e.key===" "||e.key==="Enter"){ e.preventDefault(); KK.flip=!KK.flip; kkShow(); }
+  else if(KK.flip&&/^[1-4]$/.test(e.key)){ const g=+e.key-1; if(KK.cram){ if(g===0||g===2)kkRate(g); else if(g===3)kkRate(2); } else kkRate(g); }
+});
 tick();
 home();
 </script>
